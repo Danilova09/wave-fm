@@ -31,7 +31,7 @@ router.get('/:id', async (req, res, next) => {
     try {
         const artist = await Artist.findOne({_id: req.params.id});
         if (!artist) {
-            return res.status(404).send({error: 'Not found'});
+            return res.status(404).send({error: 'Artist not found'});
         }
         return res.send(artist);
     } catch (e) {
@@ -46,7 +46,8 @@ router.post('/', upload.single('image') ,async (req, res, next) => {
         }
         const artistData = {
             _id: req.body.id,
-            name: req.file.filename,
+            name: req.body.name,
+            image: req.file.filename,
             info: req.body.info,
         }
 
