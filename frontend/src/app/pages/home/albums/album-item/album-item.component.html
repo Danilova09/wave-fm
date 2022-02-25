@@ -1,0 +1,6 @@
+<nz-card nzHoverable style="width:240px; margin: 10px;" [nzCover]="coverTemplate">
+  <nz-card-meta nzTitle="{{ album.title }}" nzDescription="Released: {{ album.releaseDate }}"></nz-card-meta>
+</nz-card>
+<ng-template #coverTemplate>
+  <img [alt]="album.image" [src]="env.albumsUploadPath + album.image"/>
+</ng-template>

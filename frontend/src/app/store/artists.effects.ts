@@ -14,7 +14,6 @@ export class ArtistsEffects {
     ))
   ));
 
-
   constructor(
     private actions: Actions,
     private artistsService: ArtistsService,

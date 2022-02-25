@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
     try {
         if (req.query.artist) {
             const artistsAlbums = await Album.find({artist: req.query.artist});
-            return res.send({albums: artistsAlbums}) ;
+            return res.send(artistsAlbums) ;
         }
         const albums = await Album.find().populate('artist', 'name info image');
         res.send(albums);
@@ -43,7 +43,7 @@ router.post('/', upload.single('image'), async (req, res, next) => {
         }
         const album = new Album(albumData);
         await album.save();
-        return res.send({album: album});
+        return res.send({album});
     } catch (e) {
         next(e);
     }

@@ -24,6 +24,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { artistsReducer } from './store/artists.reducer';
 import { ArtistsEffects } from './store/artists.effects';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { albumsReducer } from './store/albums.reducer';
+import { AlbumsEffects } from './store/albums.effects';
+import { AlbumItemComponent } from './pages/home/albums/album-item/album-item.component';
 
 registerLocaleData(en);
 
@@ -34,6 +37,7 @@ registerLocaleData(en);
     ArtistsComponent,
     AlbumsComponent,
     ArtistItemComponent,
+    AlbumItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,11 +54,16 @@ registerLocaleData(en);
     NzGridModule,
     StoreModule.forRoot({
       artists: artistsReducer,
+      albums: albumsReducer,
     }, {}),
-    EffectsModule.forRoot([ArtistsEffects]),
+    EffectsModule.forRoot([
+      ArtistsEffects,
+      AlbumsEffects,
+    ]),
     NzSpinModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

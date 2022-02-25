@@ -12,8 +12,4 @@ export class ArtistItemComponent  {
   env = environment;
 
   constructor() { }
-
-  getAlbums() {
-    console.log(this.artist.id);
-  }
 }

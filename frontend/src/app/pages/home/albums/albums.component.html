@@ -1,1 +1,8 @@
-<p *ngFor="let album of (albums | async)">album</p>
+<h1>List of Albums</h1>
+<div class="loading-block" style="display: flex; justify-content: center; align-items: center;" *ngIf="loading | async">
+  <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+</div>
+<div class="albums-list" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;" *ngIf="!(loading | async)">
+  <app-album-item *ngFor="let album of (albums | async);"
+                  [album]="album"></app-album-item>
+</div>

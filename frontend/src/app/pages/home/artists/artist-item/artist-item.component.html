@@ -1,6 +1,7 @@
-<div style="margin: 10px; max-width: 250px; cursor: pointer;" (click)="getAlbums()">
+<div [routerLink]="['/albums']" [queryParams]="{ artist: artist.id }"
+     style="margin: 10px; max-width: 250px; cursor: pointer;">
   <div class="inner-box">
-    <nz-card [nzCover]="coverTemplate">
+    <nz-card nzHoverable [nzCover]="coverTemplate">
       <nz-card-meta
         nzTitle="{{ artist.name }}"
       ></nz-card-meta>
