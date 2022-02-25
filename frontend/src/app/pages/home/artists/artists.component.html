@@ -1,16 +1,11 @@
-<div>
-  <h2>Artists</h2>
-  <div style="overflow: hidden" nz-row [nzGutter]="{ xs: 8, sm: 24, md: 24, lg: 32 }" nzJustify="center">
-    <app-artist-item></app-artist-item>
-    <app-artist-item></app-artist-item>
-    <app-artist-item></app-artist-item>
-    <app-artist-item></app-artist-item>
-    <app-artist-item></app-artist-item>
-    <app-artist-item></app-artist-item>
-    <app-artist-item></app-artist-item>
-  </div>
+<h2 style="text-align: center">Artists</h2>
+<div class="loading-block" style="display: flex; justify-content: center; align-items: center;" *ngIf="loading | async">
+  <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
 </div>
-
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;" *ngIf="!(loading | async)">
+  <app-artist-item *ngFor="let artist of (artists | async)"
+                   [artist]="artist"></app-artist-item>
+</div>
 
 
 

@@ -19,6 +19,11 @@ import { ArtistItemComponent } from './pages/home/artists/artist-item/artist-ite
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { artistsReducer } from './store/artists.reducer';
+import { ArtistsEffects } from './store/artists.effects';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 registerLocaleData(en);
 
@@ -43,6 +48,11 @@ registerLocaleData(en);
     NzCardModule,
     NzAvatarModule,
     NzGridModule,
+    StoreModule.forRoot({
+      artists: artistsReducer,
+    }, {}),
+    EffectsModule.forRoot([ArtistsEffects]),
+    NzSpinModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

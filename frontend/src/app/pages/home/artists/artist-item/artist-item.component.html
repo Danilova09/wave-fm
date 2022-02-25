@@ -1,25 +1,15 @@
-<div nz-col class="gutter-row" style="margin: 10px; ">
+<div style="margin: 10px; max-width: 250px; cursor: pointer;" (click)="getAlbums()">
   <div class="inner-box">
-    <nz-card [nzCover]="coverTemplate" [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
+    <nz-card [nzCover]="coverTemplate">
       <nz-card-meta
-        nzTitle="Card title"
-        [nzAvatar]="avatarTemplate"
+        nzTitle="{{ artist.name }}"
       ></nz-card-meta>
     </nz-card>
     <ng-template #avatarTemplate>
-      <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+      <nz-avatar nzSrc="{{ artist.image }}"></nz-avatar>
     </ng-template>
     <ng-template #coverTemplate>
-      <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"/>
-    </ng-template>
-    <ng-template #actionSetting>
-      <i nz-icon nzType="setting"></i>
-    </ng-template>
-    <ng-template #actionEdit>
-      <i nz-icon nzType="edit"></i>
-    </ng-template>
-    <ng-template #actionEllipsis>
-      <i nz-icon nzType="ellipsis"></i>
+      <img alt="example" [src]="[env.artistsUploadPath + artist.image]"/>
     </ng-template>
   </div>
 </div>
